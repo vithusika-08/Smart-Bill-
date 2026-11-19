@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMART BILL</title>
+<style>
+  body { background: #111; color: white; font-family: sans-serif; text-align: center; padding: 10px; }
+  h1 {  font-size: 30px; margin-bottom: 5px; }
+  p {  font-size: 18px; margin-top: 5px; }
+  #display { width: 95%; height: 70px; font-size: 40px; text-align: right; border-radius: 10px; border: none; padding: 5px; }
+  #totalLabel {font-size: 22px; margin: 10px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 8px; margin-top: 10px; }
+  button { height: 65px; font-size: 26px; border-radius: 10px; border: none; background: #333; color: white; }
+  . { background: #e74c3c; }
+  . { background: #7d3cff; }
+  .{ background: #2ecc71; }
+  .total-btn { width: 100%; height: 60px; background: #007bff; color: white; font-size: 26px; margin-top: 10px; border-radius: 10px; border: none; }
+</style>
+</head>
+<body>
+
+<h1>SMART BILL</h1>
+<p>Smart Bill</p>
+
+<input id="display" placeholder="0" readonly>
+
+<div id="totalLabel">Total: Rs. 0</div>
+
+<div class="grid">
+  <button class= onclick="clearAll()">C</button>
+  <button onclick="back()">⌫</button>
+  <button onclick="add('%')">%</button>
+  <button class= onclick="add('/')">/</button>
+
+  <button onclick="add('7')">7</button>
+  <button onclick="add('8')">8</button>
+  <button onclick="add('9')">9</button>
+  <button class= onclick="add('*')">*</button>
+
+  <button onclick="add('4')">4</button>
+  <button onclick="add('5')">5</button>
+  <button onclick="add('6')">6</button>
+  <button class= onclick="add('-')">-</button>
+
+  <button onclick="add('1')">1</button>
+  <button onclick="add('2')">2</button>
+  <button onclick="add('3')">3</button>
+  <button class= onclick="add('+')">+</button>
+
+  <button onclick="add('0')">0</button>
+  <button onclick="add('.')">.</button>
+  <button onclick="add('00')">00</button>
+  <button class= onclick="calc()">=</button>
+</div>
+
+<button class="total-tn" onclick="calc()">TOTAL BILL</button>
+<p style=>welcome 🤗</p>
+
+<script>
+  let d = document.getElementById('display');
+  let t = document.getElementById('totalLabel');
+  function add(v){ d.value += v; }
+  function clearAll(){ d.value=''; t.innerText='Total: Rs. 0'; }
+  function back(){ d.value = d.value.slice(0,-1); }
+  function calc(){
+    try{
+      let result = eval(d.value);
+      d.value = result;
+      t.innerText = 'Total: Rs. ' + result;
+    }catch(e){ t.innerText = ' please re-enter'; }
+  }
+</script>
+
+</body>
+    </html>
